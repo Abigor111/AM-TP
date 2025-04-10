@@ -1,4 +1,4 @@
-function [t, y] = NRK4(f, a, b, n, y0)
+function [t,y] = NRK4(f, a, b, n, y0)
 %NRK4 Método de Runge-Kutta de ordem 4 para resolução numérica de EDO/PVI
 % y' = f(t,y), t = [a,b], y(a) = y0
 % y(i+1) = y(i) + 1/6*(k1 + 2*k2 + 2*k3 + k4)
