@@ -9,8 +9,9 @@
 %   y - vetor das soluções aproximadas do PVI em cada um dos t(i)
 %   t(i+1) = t(i)+h;
 %AUTORES
-%  Igor Carvalheira    a2024128677@isec.pt
-%  Lucas Pantarotto    a2024143625@isec.pt
+% Igor Carvalheira a2024128677@isec.pt
+% Lucas Pantarotto a2024143625@isec.pt
+% Rafael Carvalho a2024143302@isec.pt
 function [t,y] = NEulerM(f,a,b,n,y0)
 
     h = (b-a)/n;            % Calcula o tamanho do passo (h) com base no intervalo [a,b] e número de subintervalos n

@@ -11,6 +11,7 @@
 %AUTORES:
 % Igor Carvalheira a2024128677@isec.pt
 % Lucas Pantarotto a2024143625@isec.pt
+% Rafael Carvalho a2024143302@isec.pt
 function [t,y] = NEuler(f,a,b,n,y0)
     h=(b-a)/n;                         %Calcula o passo h com base no intervalo e no número de subintervalos
     t(1)=a;                            %Define o primeiro valor de t como o início do intervalo
