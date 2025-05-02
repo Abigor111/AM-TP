@@ -20,6 +20,7 @@ function [t,y] = AdamsBashforth(f,a,b,n,y0)
     y(2)=y(1)+h*f(t(1),y(1));         %Calcula o segundo valor usando o método de Euler
     for i=2:n
         y(i+1)=y(i)+h/2*(3*f(t(i),y(i))-f(t(i-1),y(i-1)));  %Fórmula de Adams-Bashforth de 2ª ordem
-    end 
+    end
+    cd 
     end
     
