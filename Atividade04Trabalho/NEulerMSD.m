@@ -1,4 +1,4 @@
-function [t, x, y, z] = NEulerM3(f1, f2, f3, a, b, n, x0, y0, z0)
+function [t, x, y, z] = NEulerMSD(f1, f2, f3, a, b, n, x0, y0, z0)
 % NEulerM3 - Euler Melhorado (Heun) para sistemas de 3 EDOs
 % INPUT:
 %   f1, f2, f3 - funções derivadas para x, y, z
