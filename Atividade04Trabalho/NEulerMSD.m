@@ -1,42 +1,48 @@
-function [t, x, y, z] = NEulerMSD(f1, f2, f3, a, b, n, x0, y0, z0)
-% NEulerM3 - Euler Melhorado (Heun) para sistemas de 3 EDOs
-% INPUT:
-%   f1, f2, f3 - funções derivadas para x, y, z
-%   [a,b] - intervalo de tempo
-%   n - número de passos
-%   x0, y0, z0 - condições iniciais
-% OUTPUT:
-%   t - vetor do tempo
-%   x, y, z - soluções aproximadas
+%---> NEulerM Método de Euler Melhorado (Heun) para sistemas de EDO/PVI
+%
+%INPUT:
+% f - função da primeira EDO u'=f(t,u,v)
+% g - função da segunda EDO v'=g(t,u,v)
+% [a,b] - intervalo de valores da variável independente t
+% n - número de subintervalos ou iterações do método
+% u0 - valor inicial u(a)=u0
+% v0 - valor inicial v(a)=v0
+%
+%OUTPUT:
+% t - vetor do intervalo [a,b] discretizado
+% u - vetor das soluções aproximadas de u(t)
+% v - vetor das soluções aproximadas de v(t)
+%     com t(i+1)=t(i)+h;
+%
+%AUTORES:
+% Igor Carvalheira a2024128677@isec.pt
+% Lucas Pantarotto a2024143625@isec.pt
+% Rafael Carvalho a2024143302@isec.pt
 
-    h = (b - a) / n;       % Passo
-    t = a:h:b;             % Vetor do tempo
-
-    % Inicializar vetores solução
-    x = zeros(1, n+1); y = zeros(1, n+1); z = zeros(1, n+1);
-
-    % Condições iniciais
-    x(1) = x0; y(1) = y0; z(1) = z0;
+function [t,u,v] = NEulerM(~,f,g,a,b,n,u0,v0)
+    h = (b - a) / n;                      % Passo
+    t = a:h:b;                            % Vetor do tempo
+    u = zeros(1, n+1);                    % Inicializa vetor u
+    v = zeros(1, n+1);                    % Inicializa vetor v
+    u(1) = u0;                            % Condição inicial u(a) = u0
+    v(1) = v0;                            % Condição inicial v(a) = v0
 
     for i = 1:n
         % --- k1 ---
-        k1x = f1(t(i), x(i), y(i), z(i));
-        k1y = f2(t(i), x(i), y(i), z(i));
-        k1z = f3(t(i), x(i), y(i), z(i));
+        k1u = f(t(i), u(i), v(i));
+        k1v = g(t(i), u(i), v(i));
 
         % Previsão (Euler simples)
-        x_pred = x(i) + h * k1x;
-        y_pred = y(i) + h * k1y;
-        z_pred = z(i) + h * k1z;
+        u_pred = u(i) + h * k1u;
+        v_pred = v(i) + h * k1v;
 
         % --- k2 ---
-        k2x = f1(t(i+1), x_pred, y_pred, z_pred);
-        k2y = f2(t(i+1), x_pred, y_pred, z_pred);
-        k2z = f3(t(i+1), x_pred, y_pred, z_pred);
+        k2u = f(t(i+1), u_pred, v_pred);
+        k2v = g(t(i+1), u_pred, v_pred);
 
         % Correção (Heun)
-        x(i+1) = x(i) + (h/2) * (k1x + k2x);
-        y(i+1) = y(i) + (h/2) * (k1y + k2y);
-        z(i+1) = z(i) + (h/2) * (k1z + k2z);
+        u(i+1) = u(i) + (h/2) * (k1u + k2u);
+        v(i+1) = v(i) + (h/2) * (k1v + k2v);
     end
+
 end
