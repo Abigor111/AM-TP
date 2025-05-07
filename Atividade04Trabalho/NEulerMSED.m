@@ -19,7 +19,7 @@
 % Lucas Pantarotto a2024143625@isec.pt
 % Rafael Carvalho a2024143302@isec.pt
 
-function [t,u,v] = NEulerM(~,f,g,a,b,n,u0,v0)
+function [t,u,v] = NEulerMSED(~,f,g,a,b,n,u0,v0)
     h = (b - a) / n;                      % Passo
     t = a:h:b;                            % Vetor do tempo
     u = zeros(1, n+1);                    % Inicializa vetor u
