@@ -15,6 +15,7 @@
 % Igor Carvalheira a2024128677@isec.pt
 % Lucas Pantarotto a2024143625@isec.pt
 % Rafael Carvalho a2024143302@isec.pt
+
 function y = ODESED(~,f,a,b,n,u0,v0)
     h = (b-a)/n;                          % Calcula o passo de discretização h
     t = a:h:b;                            % Cria o vetor t com n+1 pontos
