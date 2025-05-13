@@ -1,4 +1,4 @@
-function [x,y,dydx] = NDerivacaoDFR(~, f,a,b,h,y)
+function [x,y,dydx] = NDerivacaoDFR(~, f,a,b,h, y)
     x = a:h:b;
     n = length(x);
     if nargin == 4
@@ -9,4 +9,5 @@ function [x,y,dydx] = NDerivacaoDFR(~, f,a,b,h,y)
     for i = 2:n
         dydx(i) = (y(i) - y(i-1)) / h;     % Diferença regressiva
     end
+    dydx(n) = (y(n)-y(n-1))/h;
 end

@@ -1,4 +1,4 @@
-function [x,y,dydx]=NDerivacaoDFCENT(f,a,b,h,y)
+function [x,y,dydx]=NDerivacaoDFCENT(~,f,a,b,h)
 x=a:h:b;
 n=length(x);
 if nargin==4
